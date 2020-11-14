@@ -21,6 +21,7 @@ class TicTacToe
         $mapping = [
             'easy' => new strategy\Easy(),
             'normal' => new strategy\Normal(),
+            'random' => new strategy\Random(),
         ];
 
         $this->level = $mapping[$level];
@@ -80,45 +81,17 @@ class TicTacToe
 
     public function checkEndGame()
     {
-        $gameArea = $this->getGameArea();
+        $ga = $this->getGameArea();
 
-        if ($gameArea[1][1] != $this->empty &&
-            $gameArea[1][1] == $gameArea[1][2] && $gameArea[1][1] == $gameArea[1][3]) {
-            return true;
-        }
-
-        if ($gameArea[2][1] != $this->empty &&
-            $gameArea[2][1] == $gameArea[2][2] && $gameArea[2][1] == $gameArea[2][3]) {
-            return true;
-        }
-
-        if ($gameArea[3][1] != $this->empty &&
-            $gameArea[3][1] == $gameArea[3][2] && $gameArea[3][1] == $gameArea[3][3]) {
-            return true;
-        }
-
-        if ($gameArea[1][1] != $this->empty &&
-            $gameArea[1][1] == $gameArea[2][1] && $gameArea[1][1] == $gameArea[3][1]) {
-            return true;
-        }
-
-        if ($gameArea[1][2] != $this->empty &&
-            $gameArea[1][2] == $gameArea[2][2] && $gameArea[1][2] == $gameArea[3][2]) {
-            return true;
-        }
-
-        if ($gameArea[1][3] != $this->empty &&
-            $gameArea[1][3] == $gameArea[2][3] && $gameArea[1][3] == $gameArea[3][3]) {
-            return true;
-        }
-
-        if ($gameArea[1][1] != $this->empty &&
-            $gameArea[1][1] == $gameArea[2][2] && $gameArea[1][1] == $gameArea[3][3]) {
-            return true;
-        }
-
-        if ($gameArea[1][3] != $this->empty &&
-            $gameArea[1][3] == $gameArea[2][2] && $gameArea[1][3] == $gameArea[3][1]) {
+        if (($ga[1][1] != $this->empty && $ga[1][1] == $ga[1][2] && $ga[1][1] == $ga[1][3]) ||
+            ($ga[2][1] != $this->empty && $ga[2][1] == $ga[2][2] && $ga[2][1] == $ga[2][3]) ||
+            ($ga[3][1] != $this->empty && $ga[3][1] == $ga[3][2] && $ga[3][1] == $ga[3][3]) ||
+            ($ga[1][1] != $this->empty && $ga[1][1] == $ga[2][1] && $ga[1][1] == $ga[3][1]) ||
+            ($ga[1][2] != $this->empty && $ga[1][2] == $ga[2][2] && $ga[1][2] == $ga[3][2]) ||
+            ($ga[1][3] != $this->empty && $ga[1][3] == $ga[2][3] && $ga[1][3] == $ga[3][3]) ||
+            ($ga[1][1] != $this->empty && $ga[1][1] == $ga[2][2] && $ga[1][1] == $ga[3][3]) ||
+            ($ga[1][3] != $this->empty && $ga[1][3] == $ga[2][2] && $ga[1][3] == $ga[3][1])
+        ) {
             return true;
         }
         return false;

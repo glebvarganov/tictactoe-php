@@ -6,7 +6,7 @@ use App\TicTacToe;
 
 echo "<h1>Нормальная игра</h1>";
 
-$game = new TicTacToe('normal');
+$game = new TicTacToe('random');
 // Если переданы аргументы, то ходит игрок. Первый аргумент – строка, второй – столбец.
 $move = $game->go(2, 2);
 var_dump($move);
