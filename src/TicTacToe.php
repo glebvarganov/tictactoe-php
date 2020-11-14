@@ -24,15 +24,8 @@ class TicTacToe
             'random' => new strategy\Random(),
         ];
 
-        $this->level = $mapping[$level];
-
-        /*
-        if ($level == 'easy') {
-            $this->level = new strategy\Easy();
-        } else {
-            $this->level = new strategy\Normal();
-        }
-        */
+        // Установим метод
+        $this->level = isset($mapping[$level]) ? $mapping[$level] : $mapping['random'];
 
         // Дефолтное поле
         $this->gameArea = array_fill(1, 3, array_fill(1, 3, $this->empty));
